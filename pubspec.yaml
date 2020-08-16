@@ -24,6 +24,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  firebase_auth:  # Added By Nayan for Authentication
+  google_sign_in: # Added By Nayan for Google Sign In
+
   font_awesome_flutter: # Added By Nayan for Icons
 
 

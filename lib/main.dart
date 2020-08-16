@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:MyWonderFullApp/Screens/Login.dart';
-
+import './Screens/Login.dart';
+import './Screens/MainScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 //  This is the Main Function
 void main() {
@@ -16,15 +17,14 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
-        primaryColor: Colors.white,
+        primaryColor: Colors.green,
         iconTheme: IconThemeData(
-          color: Colors.purpleAccent,
+          color: Colors.greenAccent,
           opacity: 0.5,
         ),
         buttonTheme: ButtonThemeData(
-          buttonColor: Colors.purple,
-          textTheme: ButtonTextTheme.primary, 
-
+          buttonColor: Colors.green,
+          textTheme: ButtonTextTheme.primary,
         ),
         //
         // Try running your application with "flutter run". You'll see the
@@ -40,7 +40,15 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Login(),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.onAuthStateChanged,
+        builder: (context, userSnapshot) {
+          if (userSnapshot.hasData) {
+            return MainScreen();
+          }
+          return Login();
+        },
+      ),
     );
   }
 }

@@ -1,6 +1,7 @@
 /* Author : Nayan Verma */
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../Util/AuthService.dart';
 
 /*
   This is the Login Screen
@@ -19,11 +20,9 @@ class _LoginState extends State<Login> {
 
   LoginWithGoogle() {
     // TODO
+    AuthSignIn().handleGoogleSignIn();
   }
-  LoginWithFacebook() {
-    // TODO
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +30,7 @@ class _LoginState extends State<Login> {
         child: Text('Our App'),
       ),
       appBar: AppBar(
-        title: Text('This is our Our'),
+        title: Text('This is an app'),
       ),
       body: Container(
         child: Center(
@@ -44,10 +43,10 @@ class _LoginState extends State<Login> {
                   hintText: 'Email',
                   icon: Icon(
                     Icons.email,
-                    color: Colors.purple,
+                    color: Colors.green,
                   ),
-                  prefixStyle: TextStyle(color: Colors.purple),
-                  hintStyle: TextStyle(color: Colors.purple),
+                  prefixStyle: TextStyle(color: Colors.green),
+                  hintStyle: TextStyle(color: Colors.green),
                 ),
               ),
             ),
@@ -59,10 +58,10 @@ class _LoginState extends State<Login> {
                 decoration: InputDecoration(
                   icon: Icon(
                     FontAwesomeIcons.lock,
-                    color: Colors.purple,
+                    color: Colors.green,
                   ),
-                  prefixStyle: TextStyle(color: Colors.purple),
-                  hintStyle: TextStyle(color: Colors.purple),
+                  prefixStyle: TextStyle(color: Colors.green),
+                  hintStyle: TextStyle(color: Colors.green),
                   hintText: 'Password',
                 ),
               ),
@@ -74,8 +73,12 @@ class _LoginState extends State<Login> {
               child: Text('Login'),
             ),
             SizedBox(
-              height: 100,
+              height: 70,
             ),
+            SizedBox(
+              height: 70,
+            ),
+            
             Container(
                 width: 300,
                 child: RaisedButton.icon(
@@ -85,15 +88,6 @@ class _LoginState extends State<Login> {
                     },
                     icon: Icon(FontAwesomeIcons.google),
                     label: Text('Sign in With Google'))),
-            Container(
-                width: 300,
-                child: RaisedButton.icon(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    onPressed: () {
-                      LoginWithFacebook();
-                    },
-                    icon: Icon(FontAwesomeIcons.facebook),
-                    label: Text('Sign in With Facebook'))),
           ]),
         ),
       ),
